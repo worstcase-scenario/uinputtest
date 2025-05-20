@@ -83,7 +83,8 @@ def _error_handler(result, fn, args):
 def fdopen():
     return _libsuinput.suinput_open()
 
-suffix = sysconfig.get_config_var("EXT_SUFFIX") or ".so"
+suffix = ".so"
+
 
 
 _libsuinput_path = os.path.abspath(
