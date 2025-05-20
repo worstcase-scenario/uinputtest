@@ -83,9 +83,9 @@ def _error_handler(result, fn, args):
 def fdopen():
     return _libsuinput.suinput_open()
 
-suffix = sysconfig.get_config_var("SO")
-if suffix is None:
-    suffix = ".so"  # Fallback für Embedded-Systeme wie EmuELEC
+suffix = sysconfig.get_config_var("SO") or ".so"
+
+
 
 _libsuinput_path = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "_libsuinput" + suffix)
