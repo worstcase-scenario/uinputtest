@@ -83,9 +83,12 @@ def _error_handler(result, fn, args):
 def fdopen():
     return _libsuinput.suinput_open()
 
-suffix = ".so"
+import sys
 
-
+if hasattr(sys, 'implementation') and sys.implementation.cache_tag:
+    suffix = f".{sys.implementation.cache_tag}.so"
+else:
+    suffix = ".so"
 
 _libsuinput_path = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "_libsuinput" + suffix)
